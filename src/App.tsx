@@ -28,7 +28,7 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/home/kaka">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/todos">todos</Link>
@@ -43,11 +43,11 @@ function App() {
           <Route path="/todos">
             <ObserverTodoList />
           </Route>
-          <Route path="/soundboard">
-            <h3>sound</h3>
+          <Route path="/about">
+            <h3>about</h3>
           </Route>
           <Route path="/home">
-            <h3>heee</h3>
+            <h3>home</h3>
           </Route>
         </Switch>
       </div>
