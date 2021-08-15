@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+in case of unknown err - rimraf node_modules and then yarn.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
