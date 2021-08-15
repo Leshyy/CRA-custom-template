@@ -1,25 +1,57 @@
+import './App.scss';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { store } from './store/store';
+import { observer } from 'mobx-react';
+
+const TodoList: React.FC = () => {
+  return (
+    <section>
+      {store.todos.map((todo) => {
+        return (
+          <h3 key={todo} onClick={() => store.removeTodo(todo)}>
+            {todo}
+          </h3>
+        );
+      })}
+      <button onClick={() => store.addTodo()}>Add a todo!</button>
+    </section>
+  );
+};
+
+const ObserverTodoList = observer(TodoList);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/home/kaka">Home</Link>
+            </li>
+            <li>
+              <Link to="/todos">todos</Link>
+            </li>
+            <li>
+              <Link to="/about">about</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/todos">
+            <ObserverTodoList />
+          </Route>
+          <Route path="/soundboard">
+            <h3>sound</h3>
+          </Route>
+          <Route path="/home">
+            <h3>heee</h3>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
